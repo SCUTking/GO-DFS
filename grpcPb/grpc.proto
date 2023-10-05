@@ -1,0 +1,47 @@
+syntax = "proto3"; // 版本声明，使用Protocol Buffers v3版本
+
+option go_package = "/grpcPb;grpcPb"; // 指定编译生成的文件目录，也可以指定golang包名
+
+package grpcPb; // 默认包名
+
+
+// 定义服务
+service Greeter {
+  // SayHello 方法
+  rpc SayHello (HelloRequest) returns (HelloResponse) {}
+
+  //主节点调用：
+  rpc UploadFile(UploadFileInfo) returns (HelloResponse){}
+
+  //从节点调用：保存分片到某个节点中
+  rpc SaveShards(shardsReq) returns (HelloResponse){}
+}
+
+// 请求消息
+message HelloRequest {
+  string name = 1;
+}
+
+// 响应消息
+message HelloResponse {
+  string replay = 1;
+}
+
+
+// 请求消息
+message UploadFileInfo {
+  string user = 1;
+  string scene = 2;
+  string fileName =3;
+  bytes content = 4;
+}
+
+
+message shardsReq{
+  string fileName =1;
+  string folder=2;
+  bytes content = 3;
+}
+
+
+

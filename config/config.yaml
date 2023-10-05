@@ -1,0 +1,30 @@
+# 服务器管理器地址端口
+master: localhost:6060
+slaves: [localhost:6065] #192.168.10.139
+
+#本机调试  即一台节点上同时跑主和从节点
+debug: true
+
+enableDistinctFile: true #是否支持相同的路径
+renameFile: true #是否支持系统自动重命名
+fileSumArithmetic: sha256 #加密算法
+
+#redis相关配置
+redisAddr: 139.159.136.22:6379
+redisPassword: 123456
+#MongoDB相关配置
+mongoDBAddr: mongodb://139.159.136.22:27017
+#zookeeper相关配置
+zookeeperAddr: 139.159.136.22:2181
+interval: 5  #心跳检测的间隔
+#只能写一层目录
+slavesPath: /slaves
+managerPath: /manager
+#日志相关配置
+log: ./test.log
+#  是否打印日志
+silent: false
+#  是否需要日志等级
+release: false
+#  日志等级（两个等级INFO与DEBUG）
+logLevel: DEBUG
